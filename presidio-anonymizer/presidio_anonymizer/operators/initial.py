@@ -1,21 +1,22 @@
+# presidio_anonymizer/operators/initial.py
 """MIMIC OF REDACT OPERATOR TO FOCUS ON INVOCATION"""
 
-"""Replaces the PII text entity with empty string."""
-
 from typing import Dict
-
 from presidio_anonymizer.operators import Operator, OperatorType
 
 
 class Initial(Operator):
-    """Redact the string - empty value."""
+    """Minimal operator to verify integration."""
 
     def operate(self, text: str = None, params: Dict = None) -> str:
-        """:return: an empty value."""
-        return ""
+        """
+        Minimal implementation.
+        Returns the input text unchanged (placeholder for now).
+        """
+        return text or ""
 
     def validate(self, params: Dict = None) -> None:
-        """Redact does not require any parameters so no validation is needed."""
+        """No parameters required, no validation needed."""
         pass
 
     def operator_name(self) -> str:
