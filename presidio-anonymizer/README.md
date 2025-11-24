@@ -202,3 +202,13 @@ docker-compose up -d
 
 Follow the [API Spec](https://microsoft.github.io/presidio/api-docs/api-docs.html#tag/Anonymizer) for the
 Anonymizer REST API reference details
+
+
+### Lab 11 Answers
+
+There are 2 if-statements the factory uses to select the operator. One checks if the operator
+type exists, and other checks if the operator name exists in the dictionary.
+
+The Python data structure used to select operators is Python dictionary (dict) mapping. 
+
+This demonstrates the Strategy Pattern because the engine selects different operators at runtime, with each operator performing its own task.
