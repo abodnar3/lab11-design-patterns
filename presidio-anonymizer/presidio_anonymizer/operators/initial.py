@@ -6,23 +6,28 @@ from presidio_anonymizer.operators import Operator, OperatorType
 
 
 class Initial(Operator):
-    """Minimal operator to verify integration."""
+    """Operator that converts words into initials"""
 
     def operate(self, text: str = None, params: Dict = None) -> str:
-        """
-        Minimal implementation.
-        Returns the input text unchanged (placeholder for now).
-        """
-        return text or ""
+        if not text:
+            return ""
+        words = text.split()
+        initials = []
+        for word in words:
+            for char in word:
+                if char.isalnum():
+                    initials.append(f"{char.upper()}.")
+                    break
+            else:
+                initials.append(f"{word[0].upper()}.")
+        return " ".join(initials)
+
 
     def validate(self, params: Dict = None) -> None:
-        """No parameters required, no validation needed."""
         pass
 
     def operator_name(self) -> str:
-        """Return operator name."""
         return "initial"
 
     def operator_type(self) -> OperatorType:
-        """Return operator type."""
         return OperatorType.Anonymize
