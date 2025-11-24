@@ -17,13 +17,21 @@ class Initial(Operator):
         initials = []
         
         for word in words:
+            prefix = ""
+            initial_char = ""
+            
             for char in word:
                 if char.isalnum():
-                    initials.append(f"{char.upper()}.")
+                    initial_char = char.upper()
                     break
-            else:
-                initials.append(f"{word[0].upper()}.")
+                else:
+                    prefix += char
                 
+            if not initial_char and word:
+                initial_char = word[0].upper()   
+        
+            initials.append(f"{prefix}{initial_char}.")
+            
         return " ".join(initials)
 
 
