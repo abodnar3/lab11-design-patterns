@@ -11,8 +11,11 @@ class Initial(Operator):
     def operate(self, text: str = None, params: Dict = None) -> str:
         if not text:
             return ""
-        words = text.split()
+        
+        words = [w for w in text.split() if w]
+        
         initials = []
+        
         for word in words:
             for char in word:
                 if char.isalnum():
@@ -20,6 +23,7 @@ class Initial(Operator):
                     break
             else:
                 initials.append(f"{word[0].upper()}.")
+                
         return " ".join(initials)
 
 
